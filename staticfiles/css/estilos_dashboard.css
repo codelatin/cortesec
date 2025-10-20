@@ -1,4 +1,4 @@
-/* Dashboard Styles */
+/* Dashboard Styles - Bold Cards */
 .row {
     margin: 0 -15px;
 }
@@ -8,132 +8,114 @@
     width: 100%;
 }
 
-/* Card Styles */
 .card {
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(30, 60, 114, 0.08);
     margin-bottom: 2rem;
     border: none;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    overflow: visible;
 }
 
-.card:hover {
-    box-shadow: 0 8px 25px rgba(42, 82, 152, 0.15);
-    transform: translateY(-2px);
-}
-
-/* Card Header */
 .card-header {
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e99c4 100%);
-    padding: 1.5rem 2rem;
-    border-bottom: none;
+    padding: 2.5rem 2rem;
+    border-radius: 24px 24px 0 0;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(42, 82, 152, 0.3);
 }
 
 .card-title {
     color: white;
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 2.5rem;
+    font-weight: 900;
     margin: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Card Body */
 .card-body {
-    padding: 2rem;
+    padding: 3rem 2rem;
 }
 
 .card-body p {
     color: #555;
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+    font-weight: 500;
 }
 
-/* Lista de Enlaces */
 .card-body ul {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-.card-body ul li {
-    margin-bottom: 1rem;
-    padding-left: 0;
+    display: grid;
+    gap: 1.5rem;
 }
 
 .card-body ul li a {
-    display: inline-block;
-    color: #2a5298;
+    display: block;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 16px;
+    color: #1e3c72;
     text-decoration: none;
-    font-size: 1.05rem;
-    font-weight: 500;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    background: linear-gradient(135deg, rgba(30, 60, 114, 0.05) 0%, rgba(42, 82, 152, 0.05) 100%);
-    border-left: 4px solid #2a5298;
-    transition: all 0.3s ease;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: 3px solid #e8f0f8;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
-    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .card-body ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(135deg, #1e3c72 0%, #7e99c4 100%);
+    border-radius: 16px 0 0 16px;
+    transition: width 0.4s ease;
+}
+
+.card-body ul li a::after {
     content: '→';
-    margin-right: 0.5rem;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #2a5298;
     font-weight: bold;
-    transition: transform 0.3s ease;
-    display: inline-block;
+    opacity: 0.5;
+    transition: all 0.3s ease;
 }
 
 .card-body ul li a:hover {
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e99c4 100%);
     color: white;
-    transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(42, 82, 152, 0.2);
-    border-left-color: #7e99c4;
+    border-color: #1e3c72;
+    transform: translateX(10px) scale(1.02);
+    box-shadow: 0 10px 40px rgba(42, 82, 152, 0.3);
 }
 
 .card-body ul li a:hover::before {
-    transform: translateX(3px);
+    width: 100%;
+    opacity: 0;
 }
 
-/* Responsive */
+.card-body ul li a:hover::after {
+    color: white;
+    opacity: 1;
+    transform: translateY(-50%) translateX(5px);
+}
+
 @media (max-width: 768px) {
-    .card-header {
-        padding: 1rem 1.5rem;
-    }
-
-    .card-title {
-        font-size: 1.5rem;
-    }
-
-    .card-body {
-        padding: 1.5rem;
-    }
-
-    .card-body p {
-        font-size: 1rem;
-    }
-
-    .card-body ul li a {
-        font-size: 0.95rem;
-        padding: 0.6rem 1rem;
-    }
-}
-
-/* Animación de entrada */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.card {
-    animation: fadeInUp 0.5s ease-out;
+    .card-header { padding: 2rem 1.5rem; }
+    .card-title { font-size: 1.8rem; }
+    .card-body { padding: 2rem 1.5rem; }
+    .card-body ul li a { padding: 1.5rem; }
 }
