@@ -128,6 +128,10 @@ NUMBER_GROUPING = 3
 
 # Archivos estáticos (CSS, JS, imágenes)
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
 # Ruta donde se guardarán los archivos recolectados (para producción)
 STATIC_ROOT = BASE_DIR / 'staticfiles' 
 #STATIC_ROOT = BASE_DIR / "staticfiles"  # para producción (collectstatic)

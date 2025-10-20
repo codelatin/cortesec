@@ -1,0 +1,139 @@
+/* Dashboard Styles */
+.row {
+    margin: 0 -15px;
+}
+
+.col-12 {
+    padding: 0 15px;
+    width: 100%;
+}
+
+/* Card Styles */
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+    border: none;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 25px rgba(42, 82, 152, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Card Header */
+.card-header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e99c4 100%);
+    padding: 1.5rem 2rem;
+    border-bottom: none;
+}
+
+.card-title {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Body */
+.card-body {
+    padding: 2rem;
+}
+
+.card-body p {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Lista de Enlaces */
+.card-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-body ul li {
+    margin-bottom: 1rem;
+    padding-left: 0;
+}
+
+.card-body ul li a {
+    display: inline-block;
+    color: #2a5298;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(30, 60, 114, 0.05) 0%, rgba(42, 82, 152, 0.05) 100%);
+    border-left: 4px solid #2a5298;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-body ul li a::before {
+    content: '→';
+    margin-right: 0.5rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.card-body ul li a:hover {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e99c4 100%);
+    color: white;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(42, 82, 152, 0.2);
+    border-left-color: #7e99c4;
+}
+
+.card-body ul li a:hover::before {
+    transform: translateX(3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-header {
+        padding: 1rem 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-body p {
+        font-size: 1rem;
+    }
+
+    .card-body ul li a {
+        font-size: 0.95rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeInUp 0.5s ease-out;
+}

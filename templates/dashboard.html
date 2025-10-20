@@ -1,8 +1,12 @@
-<!-- templates/dashboard.html -->
 {% extends 'base/base.html' %}
+{% load static %}
 
 {% block title %}Dashboard - Corte-Sec{% endblock %}
 {% block page_title %}Resumen Financiero{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/estilos_dashboard.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="row">
