@@ -12,3 +12,6 @@ def login_view(request):
     if request.method == 'POST':
         pass
     return render(request, 'auths/login.html')
+
+def logout_view(request):
+    pass

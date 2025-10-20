@@ -19,7 +19,8 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('core.urls')),
+    path('', include('home.urls')),   # 👈 prioridad para home
+    path('dashboard/', include('core.urls')),
     path('proyectos/', include('proyectos.urls')),
     path('finanzas/', include('finanzas.urls')),
     path('auths/', include('auths.urls')),
