@@ -1,0 +1,175 @@
+<!-- finanzas/templates/finanzas/lista_ingresos.html -->
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}Flujo de Caja - Ingresos{% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+  <!-- Encabezado -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Ingresos</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+            <li class="breadcrumb-item active">Ingresos</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Panel de controles -->
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <div class="card card-outline card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Filtros y Acciones</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <form method="get" id="filter-form">
+                <div class="row">
+                  <div class="col-md-3">
+                    {{ filter_form.proyecto }}
+                  </div>
+                  <div class="col-md-2">
+                    {{ filter_form.tipo_ingreso }}
+                  </div>
+                  <div class="col-md-2">
+                    {{ filter_form.estado }}
+                  </div>
+                  <div class="col-md-2">
+                    {{ filter_form.fecha_desde.label_tag }}
+                    {{ filter_form.fecha_desde }}
+                  </div>
+                  <div class="col-md-2">
+                    {{ filter_form.fecha_hasta.label_tag }}
+                    {{ filter_form.fecha_hasta }}
+                  </div>
+                  <div class="col-md-1 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary btn-block">
+                      <i class="fas fa-filter"></i> Filtrar
+                    </button>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-12">
+                    <div class="form-check">
+                      {{ filter_form.solo_vencidos }}
+                      {{ filter_form.solo_vencidos.label_tag }}
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="mt-3">
+                <a href="{% url 'finanzas:crear_ingreso' %}" class="btn btn-success">
+                  <i class="fas fa-plus"></i> Registrar Nuevo Ingreso
+                </a>
+                <!-- Botón de exportación (listo para conectar) -->
+                <a href="#" class="btn btn-default" title="Exportar a Excel">
+                  <i class="fas fa-file-excel text-success"></i> Exportar
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de ingresos -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Listado de Ingresos</h3>
+            </div>
+            <div class="card-body table-responsive">
+              {% if ingresos %}
+                <table class="table table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th>Proyecto</th>
+                      <th>Concepto</th>
+                      <th>Tipo</th>
+                      <th class="text-right">Monto Total</th>
+                      <th class="text-right">Recibido</th>
+                      <th class="text-right">Pendiente</th>
+                      <th>Estado</th>
+                      <th>Fecha Esperada</th>
+                      <th class="text-center">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for ingreso in ingresos %}
+                      <tr {% if ingreso.esta_vencido %}class="table-warning"{% endif %}>
+                        <td>{{ ingreso.proyecto.code }}<br><small>{{ ingreso.proyecto.name|truncatechars:30 }}</small></td>
+                        <td>{{ ingreso.concepto|truncatechars:40 }}</td>
+                        <td>{{ ingreso.get_tipo_ingreso_display }}</td>
+                        <td class="text-right">${{ ingreso.monto_total|floatformat:2 }}</td>
+                        <td class="text-right">${{ ingreso.monto_recibido|floatformat:2 }}</td>
+                        <td class="text-right">
+                          <strong class="{% if ingreso.monto_pendiente > 0 %}text-danger{% endif %}">
+                            ${{ ingreso.monto_pendiente|floatformat:2 }}
+                          </strong>
+                        </td>
+                        <td>
+                          {% if ingreso.estado == 'pendiente' %}
+                            <span class="badge badge-warning">Pendiente</span>
+                          {% elif ingreso.estado == 'parcial' %}
+                            <span class="badge badge-info">Parcial</span>
+                          {% elif ingreso.estado == 'recibido' %}
+                            <span class="badge badge-success">Recibido</span>
+                          {% elif ingreso.estado == 'cancelado' %}
+                            <span class="badge badge-danger">Cancelado</span>
+                          {% endif %}
+                          {% if ingreso.esta_vencido %}
+                            <br><small class="text-danger"><i class="fas fa-exclamation-triangle"></i> Vencido</small>
+                          {% endif %}
+                        </td>
+                        <td>{{ ingreso.fecha_esperada }}</td>
+                        <td class="text-center">
+                          <a href="{% url 'finanzas:editar_ingreso' ingreso.pk %}" class="btn btn-sm btn-primary" title="Editar">
+                            <i class="fas fa-edit"></i>
+                          </a>
+                          {% if ingreso.estado != 'recibido' %}
+                            <a href="{% url 'finanzas:registrar_recepcion' ingreso.pk %}" class="btn btn-sm btn-success" title="Registrar Pago">
+                              <i class="fas fa-money-bill-wave"></i>
+                            </a>
+                          {% endif %}
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              {% else %}
+                <div class="alert alert-info text-center">
+                  <i class="fas fa-info-circle"></i> No se encontraron ingresos con los filtros aplicados.
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Opcional: Script para auto-submit al cambiar checkbox de "solo_vencidos" -->
+<script>
+  document.getElementById('id_solo_vencidos').addEventListener('change', function() {
+    document.getElementById('filter-form').submit();
+  });
+</script>
+{% endblock %}

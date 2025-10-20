@@ -1,0 +1,25 @@
+<!-- templates/dashboard.html -->
+{% extends 'base/base.html' %}
+
+{% block title %}Dashboard - Corte-Sec{% endblock %}
+{% block page_title %}Resumen Financiero{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Bienvenido a Corte-Sec</h3>
+      </div>
+      <div class="card-body">
+        <p>Selecciona una sección del menú para comenzar a gestionar tus proyectos.</p>
+        <ul>
+          <li><a href="{% url 'proyectos:project_create' %}">Crear nueva Obra/Proyecto</a></li>
+          <li><a href="{% url 'finanzas:crear_ingreso' %}">Registrar ingresos y egresos</a></li>
+          <li><a href="#">Gestionar nómina</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

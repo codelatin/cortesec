@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CorteSec - Iniciar Sesión</title>
+    <link rel="stylesheet" href="{% static 'auths/css/auths_login.css' %}">
+   
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-left">
+            <div class="logo">CorteSec</div>
+            <div class="logo-subtitle">Sistema de Gestión de Proyectos de Construcción</div>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <span>Control financiero en tiempo real</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <span>Gestión de nómina digital</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <span>Reportes y análisis avanzados</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <span>Alertas de riesgo financiero</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-right">
+            <div class="login-header">
+                <h2>Bienvenido</h2>
+                <p>Ingresa tus credenciales para acceder al sistema</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Usuario o Email</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">👤</span>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            name="username" 
+                            class="form-control" 
+                            placeholder="Ingresa tu usuario"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-control" 
+                            placeholder="Ingresa tu contraseña"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember">
+                        <span>Recordarme</span>
+                    </label>
+                    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button type="submit" class="btn-login">Iniciar Sesión</button>
+
+                <div class="signup-link">
+                    ¿No tienes cuenta? <a href="#">Regístrate aquí</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Aquí conectamos  con el  backend Django
+            console.log('Login attempt:', { username, password });
+            
+            // Ejemplo de integración con Django
+            // fetch('/api/login/', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({ username, password })
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     if (data.success) {
+            //         window.location.href = '/dashboard/';
+            //     }
+            // });
+        });
+    </script>
+</body>
+</html>

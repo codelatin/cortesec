@@ -1,0 +1,116 @@
+{% extends 'base/base.html' %}
+{% load proyectos_extras %}
+
+
+{% block title %}Obras - Corte-Sec{% endblock %}
+{% block page_title %}Mis Obras{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Lista de Obras</h3>
+        <div class="card-tools">
+          <a href="{% url 'proyectos:project_create' %}" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i> Nueva Obra
+          </a>
+        </div>
+      </div>
+      <div class="card-body table-responsive">
+        {% if object_list %}
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nombre de la Obra</th>
+              <th>Cliente</th>
+              <th>Ubicación</th>
+              <th>Estado</th>
+              <th>Progreso</th>
+              <th>Monto Contrato</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for project in object_list %}
+            <tr>
+              <td><strong>{{ project.code }}</strong></td>
+              <td>{{ project.name }}</td>
+              <td>{{ project.client_name }}{% if project.client_company %} ({{ project.client_company }}){% endif %}</td>
+              <td>{{ project.location }}</td>
+              <td>
+                {% if project.status == 'active' %}
+                  <span class="badge badge-success">{{ project.get_status_display }}</span>
+                {% elif project.status == 'completed' %}
+                  <span class="badge badge-secondary">{{ project.get_status_display }}</span>
+                {% elif project.status == 'on_hold' %}
+                  <span class="badge badge-warning">{{ project.get_status_display }}</span>
+                {% elif project.status == 'cancelled' %}
+                  <span class="badge badge-danger">{{ project.get_status_display }}</span>
+                {% else %}
+                  <span class="badge badge-info">{{ project.get_status_display }}</span>
+                {% endif %}
+              </td>
+              <td>
+                <div class="progress progress-xs">
+                  <div class="progress-bar bg-{{ project.progress|floatformat:"0"|progress_color }}" 
+                       style="width: {{ project.progress|floatformat:"0" }}%"></div>
+                </div>
+                <small>{{ project.progress|floatformat:"0" }}%</small>
+              </td>
+              <td>${{ project.contract_amount|floatformat:0 }}</td>
+              <td>
+                <a href="{% url 'proyectos:project_edit' project.pk %}" 
+                   class="btn btn-sm btn-warning" 
+                   title="Editar">
+                  <i class="fas fa-edit"></i>
+                </a>
+                <!-- Puedes agregar botón de ver detalle o eliminar aquí -->
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <div class="text-center py-4">
+          <i class="fas fa-hard-hat fa-3x text-muted mb-3"></i>
+          <h5 class="text-muted">No tienes obras registradas</h5>
+          <p class="text-muted">Crea tu primera obra para comenzar a gestionar tu flujo de caja.</p>
+          <a href="{% url 'proyectos:project_create' %}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Crear Primera Obra
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .progress-xs {
+    height: 8px !important;
+    margin-bottom: 5px;
+  }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Filtro para asignar colores según el progreso
+  const progressColor = (progress) => {
+    if (progress >= 80) return 'success';
+    if (progress >= 50) return 'warning';
+    return 'danger';
+  };
+  
+  // Aplicar colores a las barras de progreso
+  document.querySelectorAll('.progress-bar').forEach(bar => {
+    const width = parseInt(bar.style.width);
+    bar.classList.remove('bg-danger', 'bg-warning', 'bg-success');
+    bar.classList.add(`bg-${progressColor(width)}`);
+  });
+</script>
+{% endblock %}

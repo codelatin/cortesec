@@ -1,0 +1,252 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CorteSec - Registro</title>
+    <link rel="stylesheet" href="{% static 'auths/css/auths_registro.css' %}">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-left">
+            <div class="logo">CorteSec</div>
+            <div class="logo-subtitle">Únete a la plataforma líder en gestión de construcción</div>
+            
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">📊</div>
+                    <div>
+                        <strong>Control Total</strong><br>
+                        Gestiona múltiples proyectos desde un solo lugar
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <div>
+                        <strong>Finanzas Claras</strong><br>
+                        Flujo de caja y reportes en tiempo real
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">👥</div>
+                    <div>
+                        <strong>Equipo Conectado</strong><br>
+                        Colaboración eficiente entre todos los roles
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🔔</div>
+                    <div>
+                        <strong>Alertas Inteligentes</strong><br>
+                        Anticipate a riesgos financieros
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-right">
+            <div class="register-header">
+                <h2>Crear Cuenta</h2>
+                <p>Completa el formulario para comenzar tu prueba gratuita</p>
+            </div>
+
+            <form id="registerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">Nombre *</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">👤</span>
+                            <input 
+                                type="text" 
+                                id="firstName" 
+                                name="first_name" 
+                                class="form-control" 
+                                placeholder="Tu nombre"
+                                required
+                            >
+                        </div>
+                        <span class="error-message" id="firstNameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Apellido *</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">👤</span>
+                            <input 
+                                type="text" 
+                                id="lastName" 
+                                name="last_name" 
+                                class="form-control" 
+                                placeholder="Tu apellido"
+                                required
+                            >
+                        </div>
+                        <span class="error-message" id="lastNameError"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico *</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">📧</span>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-control" 
+                            placeholder="correo@ejemplo.com"
+                            required
+                        >
+                    </div>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Usuario *</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">@</span>
+                            <input 
+                                type="text" 
+                                id="username" 
+                                name="username" 
+                                class="form-control" 
+                                placeholder="usuario"
+                                required
+                                minlength="4"
+                            >
+                        </div>
+                        <span class="error-message" id="usernameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">📱</span>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                class="form-control" 
+                                placeholder="+57 300 123 4567"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Empresa / Compañía</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🏢</span>
+                        <input 
+                            type="text" 
+                            id="company" 
+                            name="company" 
+                            class="form-control" 
+                            placeholder="Nombre de tu empresa"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="role">Rol en la Empresa *</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">💼</span>
+                            <select id="role" name="role" class="form-control" required>
+                                <option value="">Selecciona tu rol</option>
+                                <option value="owner">Propietario</option>
+                                <option value="manager">Gerente de Proyecto</option>
+                                <option value="supervisor">Supervisor</option>
+                                <option value="engineer">Ingeniero</option>
+                                <option value="accountant">Contador</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companySize">Tamaño de Empresa</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">👥</span>
+                            <select id="companySize" name="company_size" class="form-control">
+                                <option value="">Selecciona</option>
+                                <option value="1-10">1-10 empleados</option>
+                                <option value="11-50">11-50 empleados</option>
+                                <option value="51-200">51-200 empleados</option>
+                                <option value="201+">Más de 200</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña *</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-control" 
+                            placeholder="Mínimo 8 caracteres"
+                            required
+                            minlength="8"
+                        >
+                    </div>
+                    <div class="password-strength">
+                        <span id="strengthText">Fortaleza de la contraseña</span>
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                    </div>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Contraseña *</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            name="confirm_password" 
+                            class="form-control" 
+                            placeholder="Repite tu contraseña"
+                            required
+                        >
+                    </div>
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+
+                <div class="terms-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="terms" id="terms" required>
+                        <span>
+                            Acepto los <a href="#">Términos y Condiciones</a> 
+                            y la <a href="#">Política de Privacidad</a> de CorteSec
+                        </span>
+                    </label>
+                </div>
+
+                <div class="terms-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="newsletter" id="newsletter">
+                        <span>
+                            Deseo recibir novedades, consejos y ofertas especiales por correo
+                        </span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-register" id="submitBtn">Crear Cuenta</button>
+
+                <div class="login-link">
+                    ¿Ya tienes cuenta? <a href="#">Inicia sesión aquí</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'auths/js/auths_registro.js' %}"></script>
+</body>
+</html>
