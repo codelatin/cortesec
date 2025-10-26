@@ -83,7 +83,9 @@
 
 .card-body ul li:nth-child(1) a::before { content: '🏗️'; }
 .card-body ul li:nth-child(2) a::before { content: '💰'; }
-.card-body ul li:nth-child(3) a::before { content: '👥'; }
+.card-body ul li:nth-child(3) a::before { content: '💸'; }
+.card-body ul li:nth-child(4) a::before { content: '👥'; }
+
 
 .card-body ul li a::after {
     content: '→';
@@ -115,4 +117,4 @@
         grid-template-columns: 40px 1fr auto;
         padding: 1rem;
     }
-}
+}/* End of Dashboard Styles */
