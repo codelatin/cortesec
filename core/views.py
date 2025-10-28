@@ -11,4 +11,16 @@ def dashboard_view(request):
     context = {
         'page_title': 'Dashboard - Corte-Sec'
     }
-    return render(request, 'dashboard.html', context)
+    return render(request, 'core/dashboard.html', context)
+
+def nosotros(request):
+    return render(request, 'core/nosotros.html')
+
+def caracteristicas(request):
+    return render(request, 'core/caracteristicas.html')
+
+def precios(request):
+    return render(request, 'core/precios.html')
+
+def contacto(request):
+    return render(request, 'core/contacto.html')

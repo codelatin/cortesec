@@ -1,0 +1,529 @@
+   * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --primary-blue: #0099ff;
+        --secondary-blue: #0066cc;
+        --dark-blue: #0f1419;
+        --light-bg: #f8f9fa;
+        --border-color: rgba(0, 153, 255, 0.2);
+        --transition: all 0.3s ease;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    /* ==================== HERO SECTION ==================== */
+    .caracteristicas-hero {
+        background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
+        color: white;
+        padding: 5rem 2rem;
+        text-align: center;
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .caracteristicas-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(0, 153, 255, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .caracteristicas-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -20%;
+        left: -5%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(0, 102, 204, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+    }
+
+    .caracteristicas-hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        animation: slideInDown 0.8s ease-out;
+        background: linear-gradient(135deg, #0099ff, #00ccff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .caracteristicas-hero p {
+        font-size: 1.2rem;
+        color: #e0e0e0;
+        margin-bottom: 2rem;
+        animation: fadeIn 1s ease-out 0.3s both;
+    }
+
+    @keyframes slideInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* ==================== CARACTERÍSTICAS GRID ==================== */
+    .caracteristicas-section {
+        padding: 5rem 2rem;
+        max-width: 1300px;
+        margin: 0 auto;
+        background: #ffffff;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+        font-size: 2.8rem;
+        color: #0f1419;
+        margin-bottom: 1rem;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    .section-header h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #0099ff, #00ccff);
+        border-radius: 2px;
+    }
+
+    .section-header p {
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Grid de características */
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+    }
+
+    /* ==================== FEATURE CARDS ==================== */
+    .feature-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2.5rem;
+        position: relative;
+        transition: var(--transition);
+        border: 2px solid transparent;
+        box-shadow: 0 5px 20px rgba(0, 153, 255, 0.08);
+        overflow: hidden;
+    }
+
+    .feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #0099ff, #00ccff);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-15px);
+        border-color: var(--primary-blue);
+        box-shadow: 0 20px 40px rgba(0, 153, 255, 0.15);
+    }
+
+    .feature-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .feature-card::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(0, 153, 255, 0.05) 0%, transparent 70%);
+        border-radius: 50%;
+        z-index: 0;
+        transition: var(--transition);
+    }
+
+    .feature-card:hover::after {
+        top: -30%;
+        right: -30%;
+    }
+
+    .feature-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .feature-card:nth-child(2) .feature-icon {
+        animation-delay: 0.2s;
+    }
+
+    .feature-card:nth-child(3) .feature-icon {
+        animation-delay: 0.4s;
+    }
+
+    .feature-card:nth-child(4) .feature-icon {
+        animation-delay: 0.6s;
+    }
+
+    .feature-card:nth-child(5) .feature-icon {
+        animation-delay: 0.8s;
+    }
+
+    .feature-card:nth-child(6) .feature-icon {
+        animation-delay: 1s;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .feature-title {
+        font-size: 1.5rem;
+        color: #0f1419;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+    }
+
+    .feature-description {
+        color: #666;
+        line-height: 1.8;
+        font-size: 0.95rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* ==================== BENEFICIOS SECTION ==================== */
+    .beneficios-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
+        padding: 5rem 2rem;
+        margin-top: 4rem;
+    }
+
+    .beneficios-container {
+        max-width: 1300px;
+        margin: 0 auto;
+    }
+
+    .beneficios-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .beneficios-header h2 {
+        font-size: 2.8rem;
+        color: #0f1419;
+        margin-bottom: 1rem;
+    }
+
+    .beneficios-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+    .beneficio-item {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        border-left: 5px solid var(--primary-blue);
+        box-shadow: 0 5px 15px rgba(0, 153, 255, 0.1);
+        transition: var(--transition);
+    }
+
+    .beneficio-item:hover {
+        transform: translateX(10px);
+        box-shadow: 0 10px 25px rgba(0, 153, 255, 0.15);
+    }
+
+    .beneficio-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #0099ff, #00ccff);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .beneficio-title {
+        font-size: 1.2rem;
+        color: #0f1419;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+
+    .beneficio-text {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* ==================== CTA SECTION ==================== */
+    .cta-section {
+        background: linear-gradient(135deg, #0099ff 0%, #0066cc 100%);
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        margin-top: 4rem;
+        border-radius: 15px;
+        max-width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0;
+    }
+
+    .cta-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: #e0e0e0;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn-cta {
+        padding: 1rem 2.5rem;
+        border: 2px solid white;
+        background: transparent;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: var(--transition);
+        display: inline-block;
+    }
+
+    .btn-cta:hover {
+        background: white;
+        color: #0099ff;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-cta-primary {
+        background: white;
+        color: #0099ff;
+        border-color: white;
+    }
+
+    .btn-cta-primary:hover {
+        background: #e0e0e0;
+        color: #0066cc;
+    }
+
+    /* ==================== RESPONSIVE DESIGN ==================== */
+    @media (max-width: 1024px) {
+        .caracteristicas-hero h1 {
+            font-size: 2.8rem;
+        }
+
+        .features-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .caracteristicas-hero {
+            padding: 3rem 1.5rem;
+            min-height: 40vh;
+        }
+
+        .caracteristicas-hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .caracteristicas-hero p {
+            font-size: 1rem;
+        }
+
+        .caracteristicas-section {
+            padding: 3rem 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+        }
+
+        .section-header p {
+            font-size: 1rem;
+        }
+
+        .features-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+        }
+
+        .beneficios-section {
+            padding: 3rem 1.5rem;
+        }
+
+        .beneficios-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .cta-section {
+            padding: 3rem 1.5rem;
+            margin: 3rem 1.5rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn-cta {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .caracteristicas-hero {
+            padding: 2rem 1rem;
+            min-height: 35vh;
+        }
+
+        .caracteristicas-hero h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .caracteristicas-hero p {
+            font-size: 0.9rem;
+        }
+
+        .caracteristicas-section {
+            padding: 2rem 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.6rem;
+        }
+
+        .feature-card {
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+        }
+
+        .feature-description {
+            font-size: 0.85rem;
+        }
+
+        .cta-section {
+            padding: 2rem 1rem;
+            margin: 2rem 1rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 1.6rem;
+        }
+
+        .cta-section p {
+            font-size: 0.95rem;
+        }
+
+        .btn-cta {
+            padding: 0.8rem 2rem;
+            font-size: 0.9rem;
+        }
+    }

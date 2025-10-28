@@ -1,0 +1,176 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Características | Cortesec{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/precios.css' %}">
+{% endblock %}
+{% block content %}
+<section class="precios-hero">
+    <div class="hero-precios-content">
+        <h1>Planes y Precios</h1>
+        <p>Elige el plan perfecto para tu empresa y comienza a optimizar tu gestión hoy</p>
+    </div>
+</section>
+
+<!-- ==================== TOGGLE SECCIÓN (Mensual/Anual) ==================== -->
+<section class="toggle-section">
+    <div class="toggle-container">
+        <span class="toggle-label">Facturación Mensual</span>
+        <div class="toggle-switch" id="billingToggle">
+            <div class="toggle-slider"></div>
+        </div>
+        <span class="toggle-label">Facturación Anual</span>
+        <span class="billing-mode" id="billingMode">Mensual</span>
+        <span class="savings-badge" id="savingsBadge" style="display: none;">Ahorra 20%</span>
+    </div>
+</section>
+
+<!-- ==================== PLANES SECTION ==================== -->
+<section class="planes-section">
+    <div class="section-header">
+        <h2>Nuestros Planes</h2>
+        <p>Desde startups hasta grandes corporaciones, tenemos el plan ideal para ti</p>
+    </div>
+
+    <div class="planes-grid">
+        <!-- Plan Básico -->
+        <div class="plan-card">
+            <h3 class="plan-name">🚀 Básico</h3>
+            <p class="plan-description">Perfecto para equipos pequeños y proyectos iniciales</p>
+            <div class="plan-price">
+                <span class="plan-price-currency">$</span>
+                <span class="plan-price-amount" data-monthly="299" data-annual="2990">80.000</span>
+                <span class="plan-price-period">/mes</span>
+            </div>
+            <p class="plan-price-original" id="original-basic" style="display: none;">$359/mes</p>
+            <ul class="plan-features">
+                <li>Hasta 5 proyectos</li>
+                <li>5 usuarios</li>
+                <li>Reportes básicos</li>
+                <li>Soporte por email</li>
+                <li class="disabled">API ilimitada</li>
+                <li class="disabled">Integraciones avanzadas</li>
+            </ul>
+            <button class="plan-cta">Comenzar Ahora</button>
+        </div>
+
+        <!-- Plan Profesional -->
+        <div class="plan-card featured">
+            <div class="plan-badge">RECOMENDADO</div>
+            <h3 class="plan-name">💼 Profesional</h3>
+            <p class="plan-description">Ideal para empresas en crecimiento y medianas</p>
+            <div class="plan-price">
+                <span class="plan-price-currency">$</span>
+                <span class="plan-price-amount" data-monthly="699" data-annual="6990">150.000</span>
+                <span class="plan-price-period">/mes</span>
+            </div>
+            <p class="plan-price-original" id="original-pro" style="display: none;">$839/mes</p>
+            <ul class="plan-features">
+                <li>Proyectos ilimitados</li>
+                <li>20 usuarios</li>
+                <li>Reportes avanzados</li>
+                <li>Soporte prioritario 24/7</li>
+                <li>API ilimitada</li>
+                <li>Integraciones avanzadas</li>
+            </ul>
+            <button class="plan-cta">Comenzar Ahora</button>
+        </div>
+
+        <!-- Plan Empresarial -->
+        <div class="plan-card">
+            <h3 class="plan-name">🏢 Empresarial</h3>
+            <p class="plan-description">Solución completa para grandes organizaciones</p>
+            <div class="plan-price">
+                <span class="plan-price-currency">$</span>
+                <span class="plan-price-amount" data-monthly="1999" data-annual="19990">220.000</span>
+                <span class="plan-price-period">/mes</span>
+            </div>
+            <p class="plan-price-original" id="original-enterprise" style="display: none;">$2,399/mes</p>
+            <ul class="plan-features">
+                <li>Proyectos ilimitados</li>
+                <li>Usuarios ilimitados</li>
+                <li>Reportes personalizados</li>
+                <li>Soporte dedicado 24/7</li>
+                <li>API ilimitada</li>
+                <li>Integraciones personalizadas</li>
+            </ul>
+            <button class="plan-cta">Solicitar Demo</button>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== COMPARATIVA SECTION ==================== -->
+<section class="comparativa-section">
+    <div class="comparativa-container">
+        <div class="comparativa-header">
+            <h2>Comparativa de Planes</h2>
+        </div>
+
+        <div class="comparativa-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Características</th>
+                        <th>Básico</th>
+                        <th>Profesional</th>
+                        <th>Empresarial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="comparativa-feature">Proyectos</td>
+                        <td>Hasta 5</td>
+                        <td>Ilimitados</td>
+                        <td>Ilimitados</td>
+                    </tr>
+                    <tr>
+                        <td class="comparativa-feature">Usuarios</td>
+                        <td>5</td>
+                        <td>20</td>
+                        <td>Ilimitados</td>
+                    </tr>
+                    <tr>
+                        <td class="comparativa-feature">Almacenamiento</td>
+                        <td>10 GB</td>
+                        <td>100 GB</td>
+                        <td>Ilimitado</td>
+                    </tr>
+                    <tr>
+                        <td class="comparativa-feature">Reportes</td>
+                        <td><span class="comparativa-check">✓</span></td>
+                        <td><span class="comparativa-check">✓</span></td>
+                        <td><span class="comparativa-check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td class="comparativa-feature">API</td>
+                        <td><span class="comparativa-cross">✗</span></td>
+                        <td><span class="comparativa-check">✓</span></td>
+                        <td><span class="comparativa-check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td class="comparativa-feature">Integraciones</td>
+                        <td><span class="comparativa-cross">✗</span></td>
+                        <td><span class="comparativa-check">✓</span></td>
+                        <td><span class="comparativa-check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td class="comparativa-feature">Soporte</td>
+                        <td>Email</td>
+                        <td>Prioritario 24/7</td>
+                        <td>Dedicado 24/7</td>
+                    </tr>
+                    <tr>
+                        <td class="comparativa-feature">Análisis Avanzado</td>
+                        <td><span class="comparativa-cross">✗</span></td>
+                        <td><span class="comparativa-check">✓</span></td>
+                        <td><span class="comparativa-check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td class="comparativa-feature">SLA Garantizado</td>
+                        <td><span class="comparativa-cross">✗</span></td>
+                        <td><span class="comparativa-cross">✗</span></td>
+                        <td><span class="comparativa-check">✓</span></td>
+{% endblock %}

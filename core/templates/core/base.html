@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}Cortesec | Plataforma de Gestión{% endblock %}
+    </title>
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="{% static 'home/css/style_navbar.css' %}">
+
+    <!-- Bloque opcional para CSS adicional -->
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <!-- 🔹 NAVBAR -->
+    {% include 'home/includes/navbar.html' %}
+
+    <!-- 🔸 Mensajes del sistema -->
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- 🔹 CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+        {% block content %}
+        <!-- Aquí irá el contenido dinámico de cada página -->
+        {% endblock %}
+    </main>
+
+    <!-- 🔹 FOOTER -->
+
+    <!-- JS principal -->
+    <script src="{% static 'home/js/script_navbar.js' %}"></script>
+
+    <!-- Bloque opcional para JS adicional -->
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

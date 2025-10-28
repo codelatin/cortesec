@@ -1,0 +1,285 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Características | Cortesec{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/contacto.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- ==================== HERO SECTION ==================== -->
+<section class="contacto-hero">
+    <div class="hero-contacto-content">
+        <h1>Ponte en Contacto</h1>
+        <p>¿Tienes preguntas? Nos encantaría saber de ti. Contáctanos a través de cualquier canal</p>
+    </div>
+</section>
+
+<!-- ==================== CANALES DE CONTACTO ==================== -->
+<section class="canales-section">
+    <div class="section-header">
+        <h2>Formas de Contactarnos</h2>
+        <p>Elige el canal que mejor se adapte a ti</p>
+    </div>
+
+    <div class="canales-grid">
+        <!-- Canal Teléfono -->
+        <div class="canal-card">
+            <div class="canal-icon">📞</div>
+            <h3 class="canal-title">Teléfono</h3>
+            <p class="canal-description">Habla directamente con nuestro equipo de soporte</p>
+            <div class="canal-info">
+                <div class="canal-value">+1 (800) 123-4567</div>
+            </div>
+            <a href="tel:+18001234567" class="canal-link">Llamar Ahora</a>
+        </div>
+
+        <!-- Canal Email -->
+        <div class="canal-card">
+            <div class="canal-icon">✉️</div>
+            <h3 class="canal-title">Email</h3>
+            <p class="canal-description">Envíanos un correo y te responderemos en 24 horas</p>
+            <div class="canal-info">
+                <div class="canal-value">info@cortesec.com</div>
+                <div class="canal-value" style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Soporte: support@cortesec.com</div>
+            </div>
+            <a href="mailto:info@cortesec.com" class="canal-link">Enviar Email</a>
+        </div>
+
+        <!-- Canal WhatsApp -->
+        <div class="canal-card">
+            <div class="canal-icon">💬</div>
+            <h3 class="canal-title">WhatsApp</h3>
+            <p class="canal-description">Mensajería instantánea para consultas rápidas</p>
+            <div class="canal-info">
+                <div class="canal-value">+1 (800) 987-6543</div>
+            </div>
+            <a href="https://wa.me/18009876543" class="canal-link" target="_blank">Escribir por WhatsApp</a>
+        </div>
+
+        <!-- Canal Chat en Vivo -->
+        <div class="canal-card">
+            <div class="canal-icon">💬</div>
+            <h3 class="canal-title">Chat en Vivo</h3>
+            <p class="canal-description">Atención inmediata de nuestro equipo disponible 24/7</p>
+            <div class="canal-info">
+                <div class="canal-value">Disponible en nuestra plataforma</div>
+            </div>
+            <a href="#" class="canal-link">Abrir Chat</a>
+        </div>
+
+        <!-- Canal Redes Sociales -->
+        <div class="canal-card">
+            <div class="canal-icon">📱</div>
+            <h3 class="canal-title">Redes Sociales</h3>
+            <p class="canal-description">Síguenos y comunícate en nuestras redes</p>
+            <div class="canal-info">
+                <div class="canal-value">@cortesec_oficial</div>
+            </div>
+            <a href="#" class="canal-link">Ver Redes</a>
+        </div>
+
+        <!-- Canal Formulario -->
+        <div class="canal-card">
+            <div class="canal-icon">📋</div>
+            <h3 class="canal-title">Formulario</h3>
+            <p class="canal-description">Completa nuestro formulario de contacto</p>
+            <div class="canal-info">
+                <div class="canal-value">Respuesta en 24-48 horas</div>
+            </div>
+            <a href="#formulario" class="canal-link">Ir al Formulario</a>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SECCIÓN MAPA DE GOOGLE ==================== -->
+<section class="mapa-section">
+    <div class="mapa-header">
+        <h2>📍 Nuestras Ubicaciones en el Mapa</h2>
+        <p>Visita nuestras oficinas en las principales ciudades</p>
+    </div>
+
+    <div class="mapa-container">
+        <iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.241824627345!2d-74.78161682599816!3d4.281687945707456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f0c2b2a7d1f39%3A0x9a8b46c65b9db6e5!2sRicaurte%2C%20Cundinamarca%2C%20Colombia!5e0!3m2!1ses!2sco!4v1730040854321!5m2!1ses!2sco" 
+  width="100%" 
+  height="100%" 
+  style="border:0;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+    </div>
+
+    <div class="mapa-info">
+        <div class="mapa-info-card">
+            <div class="mapa-info-icon">🏢</div>
+            <div class="mapa-info-title">Oficina Principal</div>
+            <div class="mapa-info-text">Ricaurte, Colombia - Nuestro centro de operaciones</div>
+        </div>
+
+        <div class="mapa-info-card">
+            <div class="mapa-info-icon">🌍</div>
+            <div class="mapa-info-title">Alcance Global</div>
+            <div class="mapa-info-text">Presencia en 5 países de América Latina</div>
+        </div>
+
+        <div class="mapa-info-card">
+            <div class="mapa-info-icon">🚀</div>
+            <div class="mapa-info-title">En Crecimiento</div>
+            <div class="mapa-info-text">Expandiendo nuestros servicios continuamente</div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FORMULARIO DE CONTACTO ==================== -->
+<section class="formulario-section" id="formulario">
+    <div class="formulario-container">
+        <div class="formulario-header">
+            <h2>Envíanos un Mensaje</h2>
+            <p>Completa el formulario y nos pondremos en contacto lo antes posible</p>
+        </div>
+
+        <div class="form-wrapper">
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo *</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa">Empresa</label>
+                        <input type="text" id="empresa" name="empresa">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="asunto">Asunto *</label>
+                    <input type="text" id="asunto" name="asunto" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo">Tipo de Consulta *</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="ventas">Ventas</option>
+                        <option value="soporte">Soporte Técnico</option>
+                        <option value="facturacion">Facturación</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">Mensaje *</label>
+                    <textarea id="mensaje" name="mensaje" required></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== UBICACIONES SECTION ==================== -->
+<section class="ubicaciones-section">
+    <div class="ubicaciones-header">
+        <h2>Nuestras Oficinas</h2>
+        <p>Visítanos en cualquiera de nuestras sedes</p>
+    </div>
+
+    <div class="ubicaciones-grid">
+        <div class="ubicacion-card">
+            <div class="ubicacion-icon">🏢</div>
+            <h3 class="ubicacion-ciudad">Ricaurte</h3>
+            <p class="ubicacion-pais">Colombia</p>
+            <div class="ubicacion-detalles">
+                <div>
+                    <span class="ubicacion-label">Dirección:</span><br>
+                    Calle 50 #55-30, Piso 8
+                </div>
+                <div>
+                    <span class="ubicacion-label">Teléfono:</span><br>
+                    +57 (4) 123-4567
+                </div>
+                <div>
+                    <span class="ubicacion-label">Email:</span><br>
+                    Ricaurte@cortesec.com
+                </div>
+            </div>
+        </div>
+
+       
+
+        
+    </div>
+</section>
+
+<!-- ==================== HORARIOS SECTION ==================== -->
+<section class="horarios-section">
+    <div class="horarios-container">
+        <div class="horarios-header">
+            <h2>Horarios de Atención</h2>
+        </div>
+
+        <div class="horarios-grid">
+            <div class="horario-card">
+                <div class="horario-titulo">⏰ Entre Semana</div>
+                <div class="horario-item">
+                    <span class="horario-dia">Lunes - Viernes</span><br>
+                    <span class="horario-hora">8:00 AM - 6:00 PM</span>
+                </div>
+                <div class="estado-badge estado-abierto">Abierto</div>
+            </div>
+
+            <div class="horario-card">
+                <div class="horario-titulo">📅 Fin de Semana</div>
+                <div class="horario-item">
+                    <span class="horario-dia">Sábado</span><br>
+                    <span class="horario-hora">9:00 AM - 2:00 PM</span>
+                </div>
+                <div class="horario-item">
+                    <span class="horario-dia">Domingo</span><br>
+                    <span class="horario-hora">Cerrado</span>
+                </div>
+                <div class="estado-badge estado-cerrado">Cerrado</div>
+            </div>
+
+            <div class="horario-card">
+                <div class="horario-titulo">🆘 Soporte 24/7</div>
+                <div class="horario-item">
+                    <span class="horario-dia">Todos los días</span><br>
+                    <span class="horario-hora">24 Horas</span>
+                </div>
+                <p style="color: #666; font-size: 0.85rem; margin-top: 1rem;">Para emergencias y soporte técnico</p>
+                <div class="estado-badge estado-abierto">Disponible</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== CTA FINAL SECTION ==================== -->
+<section class="cta-final-section">
+    <div class="cta-final-container">
+        <h2>¿Listo para Comenzar?</h2>
+        <p>Nuestro equipo está listo para ayudarte a transformar tu negocio con CorteSec</p>
+        <div class="cta-buttons">
+            <a href="#" class="btn-cta btn-cta-primary">Comenzar Prueba Gratis</a>
+            <a href="#formulario" class="btn-cta">Agendar Asesoría</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,887 @@
+    /* ==================== RESET Y VARIABLES ==================== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --primary-blue: #0099ff;
+        --secondary-blue: #0066cc;
+        --dark-blue: #0f1419;
+        --light-bg: #f8f9fa;
+        --border-color: rgba(0, 153, 255, 0.2);
+        --transition: all 0.3s ease;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    /* ==================== HERO SECTION CONTACTO ==================== */
+    .contacto-hero {
+        background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
+        color: white;
+        padding: 5rem 2rem;
+        text-align: center;
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contacto-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(0, 153, 255, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .contacto-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -20%;
+        left: -5%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(0, 102, 204, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .hero-contacto-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+    }
+
+    .contacto-hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        animation: slideInDown 0.8s ease-out;
+        background: linear-gradient(135deg, #0099ff, #00ccff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .contacto-hero p {
+        font-size: 1.2rem;
+        color: #e0e0e0;
+        margin-bottom: 2rem;
+        animation: fadeIn 1s ease-out 0.3s both;
+    }
+
+    @keyframes slideInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* ==================== CANALES CONTACTO SECTION ==================== */
+    .canales-section {
+        padding: 5rem 2rem;
+        max-width: 1300px;
+        margin: 0 auto;
+        background: #ffffff;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+        font-size: 2.8rem;
+        color: #0f1419;
+        margin-bottom: 1rem;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    .section-header h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #0099ff, #00ccff);
+        border-radius: 2px;
+    }
+
+    .section-header p {
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Grid de canales */
+    .canales-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+    }
+
+    /* ==================== CANAL CARDS ==================== */
+    .canal-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2.5rem;
+        position: relative;
+        transition: var(--transition);
+        border: 2px solid var(--border-color);
+        box-shadow: 0 5px 20px rgba(0, 153, 255, 0.08);
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .canal-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #0099ff, #00ccff);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease;
+    }
+
+    .canal-card:hover {
+        transform: translateY(-15px);
+        border-color: var(--primary-blue);
+        box-shadow: 0 20px 40px rgba(0, 153, 255, 0.15);
+    }
+
+    .canal-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .canal-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+    }
+
+    .canal-title {
+        font-size: 1.5rem;
+        color: #0f1419;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .canal-description {
+        color: #666;
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .canal-info {
+        background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+    }
+
+    .canal-value {
+        color: var(--primary-blue);
+        font-weight: 700;
+        font-size: 1.1rem;
+        word-break: break-all;
+    }
+
+    .canal-link {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        background: linear-gradient(135deg, #0099ff, #0066cc);
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 700;
+        transition: var(--transition);
+    }
+
+    .canal-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 153, 255, 0.3);
+    }
+
+    /* ==================== MAPA SECTION ==================== */
+    .mapa-section {
+        padding: 5rem 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        background: white;
+    }
+
+    .mapa-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .mapa-header h2 {
+        font-size: 2.8rem;
+        color: #0f1419;
+        margin-bottom: 1rem;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    .mapa-header h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #0099ff, #00ccff);
+        border-radius: 2px;
+    }
+
+    .mapa-container {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 153, 255, 0.15);
+        height: 500px;
+        border: 2px solid var(--border-color);
+        transition: var(--transition);
+    }
+
+    .mapa-container:hover {
+        box-shadow: 0 15px 50px rgba(0, 153, 255, 0.25);
+        border-color: var(--primary-blue);
+    }
+
+    .mapa-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .mapa-info {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .mapa-info-card {
+        background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 4px solid var(--primary-blue);
+        box-shadow: 0 5px 15px rgba(0, 153, 255, 0.08);
+    }
+
+    .mapa-info-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .mapa-info-title {
+        font-weight: 700;
+        color: #0f1419;
+        margin-bottom: 0.5rem;
+    }
+
+    .mapa-info-text {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    /* ==================== FORMULARIO SECTION ==================== */
+    .formulario-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
+        padding: 5rem 2rem;
+    }
+
+    .formulario-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .formulario-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .formulario-header h2 {
+        font-size: 2.8rem;
+        color: #0f1419;
+        margin-bottom: 1rem;
+    }
+
+    .formulario-header p {
+        font-size: 1.1rem;
+        color: #666;
+    }
+
+    .form-wrapper {
+        background: white;
+        padding: 3rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 153, 255, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 2rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.7rem;
+        font-weight: 700;
+        color: #0f1419;
+        font-size: 1rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid var(--border-color);
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: var(--transition);
+        background: #f9f9f9;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+        outline: none;
+        border-color: var(--primary-blue);
+        background: white;
+        box-shadow: 0 0 15px rgba(0, 153, 255, 0.1);
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 150px;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .form-submit {
+        width: 100%;
+        padding: 1.2rem;
+        background: linear-gradient(135deg, #0099ff, #0066cc);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: var(--transition);
+        margin-top: 1rem;
+    }
+
+    .form-submit:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 153, 255, 0.3);
+    }
+
+    .form-submit:active {
+        transform: translateY(-1px);
+    }
+
+    /* ==================== UBICACIONES SECTION ==================== */
+    .ubicaciones-section {
+        padding: 5rem 2rem;
+        max-width: 1300px;
+        margin: 0 auto;
+        background: white;
+    }
+
+    .ubicaciones-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .ubicaciones-header h2 {
+        font-size: 2.8rem;
+        color: #0f1419;
+        margin-bottom: 1rem;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    .ubicaciones-header h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #0099ff, #00ccff);
+        border-radius: 2px;
+    }
+
+    .ubicaciones-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+    }
+
+    .ubicacion-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2.5rem;
+        border: 2px solid var(--border-color);
+        box-shadow: 0 5px 20px rgba(0, 153, 255, 0.08);
+        transition: var(--transition);
+    }
+
+    .ubicacion-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary-blue);
+        box-shadow: 0 15px 35px rgba(0, 153, 255, 0.15);
+    }
+
+    .ubicacion-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .ubicacion-ciudad {
+        font-size: 1.5rem;
+        color: #0f1419;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+
+    .ubicacion-pais {
+        color: var(--primary-blue);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    .ubicacion-detalles {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+
+    .ubicacion-detalles div {
+        margin-bottom: 0.8rem;
+    }
+
+    .ubicacion-label {
+        font-weight: 600;
+        color: #0f1419;
+    }
+
+    /* ==================== HORARIOS SECTION ==================== */
+    .horarios-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
+        padding: 5rem 2rem;
+    }
+
+    .horarios-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .horarios-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .horarios-header h2 {
+        font-size: 2.8rem;
+        color: #0f1419;
+        margin-bottom: 1rem;
+    }
+
+    .horarios-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .horario-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 153, 255, 0.08);
+        border-left: 5px solid var(--primary-blue);
+        transition: var(--transition);
+    }
+
+    .horario-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 30px rgba(0, 153, 255, 0.15);
+    }
+
+    .horario-titulo {
+        font-size: 1.3rem;
+        color: #0f1419;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+    }
+
+    .horario-item {
+        color: #666;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .horario-dia {
+        font-weight: 600;
+        color: #0f1419;
+    }
+
+    .horario-hora {
+        color: var(--primary-blue);
+        font-weight: 700;
+    }
+
+    .estado-badge {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-top: 1rem;
+    }
+
+    .estado-abierto {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .estado-cerrado {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    /* ==================== CTA FINAL SECTION ==================== */
+    .cta-final-section {
+        background: linear-gradient(135deg, #0099ff 0%, #0066cc 100%);
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        margin-top: 4rem;
+    }
+
+    .cta-final-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .cta-final-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .cta-final-section p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: #e0e0e0;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn-cta {
+        padding: 1rem 2.5rem;
+        border: 2px solid white;
+        background: transparent;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: var(--transition);
+        display: inline-block;
+    }
+
+    .btn-cta:hover {
+        background: white;
+        color: #0099ff;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-cta-primary {
+        background: white;
+        color: #0099ff;
+        border-color: white;
+    }
+
+    .btn-cta-primary:hover {
+        background: #e0e0e0;
+        color: #0066cc;
+    }
+
+    /* ==================== RESPONSIVE DESIGN ==================== */
+    @media (max-width: 1024px) {
+        .contacto-hero h1 {
+            font-size: 2.8rem;
+        }
+
+        .canales-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contacto-hero {
+            padding: 3rem 1.5rem;
+            min-height: 40vh;
+        }
+
+        .contacto-hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .contacto-hero p {
+            font-size: 1rem;
+        }
+
+        .canales-section {
+            padding: 3rem 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+        }
+
+        .canales-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .canal-card {
+            padding: 2rem;
+        }
+
+        .mapa-section {
+            padding: 3rem 1.5rem;
+        }
+
+        .mapa-header h2 {
+            font-size: 2rem;
+        }
+
+        .mapa-container {
+            height: 350px;
+        }
+
+        .mapa-info {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .formulario-section {
+            padding: 3rem 1.5rem;
+        }
+
+        .form-wrapper {
+            padding: 2rem;
+        }
+
+        .formulario-header h2 {
+            font-size: 2rem;
+        }
+
+        .ubicaciones-section {
+            padding: 3rem 1.5rem;
+        }
+
+        .ubicaciones-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .horarios-section {
+            padding: 3rem 1.5rem;
+        }
+
+        .horarios-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .cta-final-section {
+            padding: 3rem 1.5rem;
+        }
+
+        .cta-final-section h2 {
+            font-size: 2rem;
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn-cta {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .contacto-hero {
+            padding: 2rem 1rem;
+            min-height: 35vh;
+        }
+
+        .contacto-hero h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contacto-hero p {
+            font-size: 0.9rem;
+        }
+
+        .canales-section {
+            padding: 2rem 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.6rem;
+        }
+
+        .canal-card {
+            padding: 1.5rem;
+        }
+
+        .canal-icon {
+            font-size: 2.5rem;
+        }
+
+        .mapa-section {
+            padding: 2rem 1rem;
+        }
+
+        .mapa-header h2 {
+            font-size: 1.6rem;
+        }
+
+        .mapa-container {
+            height: 300px;
+        }
+
+        .formulario-section {
+            padding: 2rem 1rem;
+        }
+
+        .form-wrapper {
+            padding: 1.5rem;
+        }
+
+        .formulario-header h2 {
+            font-size: 1.6rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.8rem;
+            font-size: 16px;
+        }
+
+        .form-submit {
+            padding: 1rem;
+            font-size: 1rem;
+        }
+
+        .ubicaciones-section {
+            padding: 2rem 1rem;
+        }
+
+        .ubicaciones-header h2 {
+            font-size: 1.6rem;
+        }
+
+        .ubicacion-card {
+            padding: 1.5rem;
+        }
+
+        .horarios-section {
+            padding: 2rem 1rem;
+        }
+
+        .horarios-header h2 {
+            font-size: 1.6rem;
+        }
+
+        .horario-card {
+            padding: 1.5rem;
+        }
+
+        .cta-final-section {
+            padding: 2rem 1rem;
+        }
+
+        .cta-final-section h2 {
+            font-size: 1.6rem;
+        }
+
+        .cta-final-section p {
+            font-size: 0.95rem;
+        }
+
+        .btn-cta {
+            padding: 0.8rem 2rem;
+            font-size: 0.9rem;
+        }
+    }

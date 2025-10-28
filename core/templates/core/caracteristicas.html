@@ -1,0 +1,129 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Características | Cortesec{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/caracteristicas.css' %}">
+{% endblock %}
+{% block content %}
+<!-- Sección de Características -->
+
+<!-- ==================== HERO SECTION ==================== -->
+<section class="caracteristicas-hero">
+    <div class="hero-content">
+        <h1>Características Poderosas</h1>
+        <p>Descubre todo lo que CorteSec puede hacer por tu negocio de construcción</p>
+    </div>
+</section>
+
+<!-- ==================== CARACTERÍSTICAS GRID ==================== -->
+<section class="caracteristicas-section">
+    <div class="section-header">
+        <h2>Lo que te Ofrece CorteSec</h2>
+        <p>Soluciones integrales diseñadas para optimizar cada aspecto de tu gestión de proyectos</p>
+    </div>
+
+    <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-title">Control Total</h3>
+            <p class="feature-description">Gestiona múltiples proyectos desde un solo lugar con dashboards intuitivos y reportes detallados.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3 class="feature-title">Finanzas Claras</h3>
+            <p class="feature-description">Flujo de caja y reportes en tiempo real para mantener tus finanzas bajo control absoluto.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <h3 class="feature-title">Equipo Conectado</h3>
+            <p class="feature-description">Colaboración eficiente entre todos los roles: gerentes, contratistas, supervisores y más.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+            <div class="feature-icon">🔔</div>
+            <h3 class="feature-title">Alertas Inteligentes</h3>
+            <p class="feature-description">Anticipate a riesgos financieros y retrasos con notificaciones proactivas y en tiempo real.</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+            <div class="feature-icon">📅</div>
+            <h3 class="feature-title">Planificación Avanzada</h3>
+            <p class="feature-description">Cronogramas detallados, asignación de recursos y seguimiento de hitos en tiempo real.</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3 class="feature-title">Seguridad Garantizada</h3>
+            <p class="feature-description">Protección de datos con encriptación de nivel empresarial y cumplimiento normativo.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== BENEFICIOS SECTION ==================== -->
+<section class="beneficios-section">
+    <div class="beneficios-container">
+        <div class="beneficios-header">
+            <h2>Beneficios Clave</h2>
+        </div>
+
+        <div class="beneficios-grid">
+            <div class="beneficio-item">
+                <div class="beneficio-icon">⚡</div>
+                <h3 class="beneficio-title">Eficiencia Operativa</h3>
+                <p class="beneficio-text">Automatiza procesos y reduce tiempos administrativos hasta un 70%.</p>
+            </div>
+
+            <div class="beneficio-item">
+                <div class="beneficio-icon">📈</div>
+                <h3 class="beneficio-title">Aumenta Rentabilidad</h3>
+                <p class="beneficio-text">Optimiza recursos y maximiza ganancias con análisis profundos.</p>
+            </div>
+
+            <div class="beneficio-item">
+                <div class="beneficio-icon">🎯</div>
+                <h3 class="beneficio-title">Decisiones Acertadas</h3>
+                <p class="beneficio-text">Datos en tiempo real para tomar decisiones más precisas y rápidas.</p>
+            </div>
+
+            <div class="beneficio-item">
+                <div class="beneficio-icon">🚀</div>
+                <h3 class="beneficio-title">Escalabilidad</h3>
+                <p class="beneficio-text">Crece sin limitaciones con una plataforma que se adapta a ti.</p>
+            </div>
+
+            <div class="beneficio-item">
+                <div class="beneficio-icon">🤝</div>
+                <h3 class="beneficio-title">Mejor Colaboración</h3>
+                <p class="beneficio-text">Tu equipo conectado y sincronizado en tiempo real desde cualquier lugar.</p>
+            </div>
+
+            <div class="beneficio-item">
+                <div class="beneficio-icon">✅</div>
+                <h3 class="beneficio-title">Cumplimiento Normativo</h3>
+                <p class="beneficio-text">Cumple con todas las regulaciones del sector automáticamente.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== CTA SECTION ==================== -->
+<section class="cta-section">
+    <h2>¿Listo para Transformar tu Negocio?</h2>
+    <p>Únete a cientos de empresas que ya confían en CorteSec para gestionar sus proyectos</p>
+    <div class="cta-buttons">
+        <a href="#" class="btn-cta btn-cta-primary">Comenzar Ahora</a>
+        <a href="#" class="btn-cta">Solicitar Demo</a>
+    </div>
+</section>
+{% endblock %}

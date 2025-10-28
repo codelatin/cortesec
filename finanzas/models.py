@@ -409,3 +409,253 @@ class ProyeccionFlujoCaja(models.Model):
     def variacion(self):
         """Variación entre proyectado y real"""
         return self.flujo_neto_real - self.flujo_neto_proyectado
+
+
+class Egreso(models.Model):
+    """
+    Egresos del proyecto (materiales, mano de obra, subcontratos, gastos administrativos)
+    """
+    TIPO_EGRESO = [
+        ('material', 'Material'),
+        ('mano_obra', 'Mano de Obra'),
+        ('subcontrato', 'Subcontrato'),
+        ('equipo', 'Equipo y Maquinaria'),
+        ('administrativo', 'Gasto Administrativo'),
+        ('servicio', 'Servicio'),
+        ('transporte', 'Transporte'),
+        ('impuesto', 'Impuesto'),
+        ('otro', 'Otro'),
+    ]
+    
+    ESTADO_PAGO = [
+        ('pendiente', 'Pendiente'),
+        ('pagado', 'Pagado'),
+        ('parcial', 'Parcial'),
+        ('cancelado', 'Cancelado'),
+    ]
+    
+    METODO_PAGO = [
+        ('transferencia', 'Transferencia Bancaria'),
+        ('cheque', 'Cheque'),
+        ('efectivo', 'Efectivo'),
+        ('tarjeta', 'Tarjeta de Crédito'),
+        ('otro', 'Otro'),
+    ]
+    
+    # Relación con proyecto
+    proyecto = models.ForeignKey(
+        'proyectos.Project',
+        on_delete=models.CASCADE,
+        related_name='egresos',
+        verbose_name="Proyecto"
+    )
+    
+    # Relación opcional con presupuesto
+    presupuesto = models.ForeignKey(
+        'Presupuesto',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='egresos',
+        verbose_name="Presupuesto asociado"
+    )
+    
+    # Información básica
+    concepto = models.CharField(
+        max_length=200,
+        verbose_name="Concepto"
+    )
+    descripcion = models.TextField(
+        blank=True,
+        verbose_name="Descripción detallada"
+    )
+    tipo_egreso = models.CharField(
+        max_length=20,
+        choices=TIPO_EGRESO,
+        verbose_name="Tipo de egreso"
+    )
+    
+    # Proveedor/Beneficiario
+    proveedor = models.CharField(
+        max_length=200,
+        verbose_name="Proveedor/Beneficiario"
+    )
+    nit_proveedor = models.CharField(
+        max_length=50,
+        blank=True,
+        verbose_name="NIT/RUT del proveedor"
+    )
+    
+    # Montos
+    monto_total = models.DecimalField(
+        max_digits=15,
+        decimal_places=2,
+        validators=[MinValueValidator(0)],
+        verbose_name="Monto total"
+    )
+    monto_pagado = models.DecimalField(
+        max_digits=15,
+        decimal_places=2,
+        default=0,
+        validators=[MinValueValidator(0)],
+        verbose_name="Monto pagado"
+    )
+    
+    # Fechas
+    fecha_emision = models.DateField(
+        verbose_name="Fecha de emisión"
+    )
+    fecha_vencimiento = models.DateField(
+        verbose_name="Fecha de vencimiento"
+    )
+    fecha_pago = models.DateField(
+        null=True,
+        blank=True,
+        verbose_name="Fecha de pago"
+    )
+    
+    # Estado y método de pago
+    estado = models.CharField(
+        max_length=20,
+        choices=ESTADO_PAGO,
+        default='pendiente',
+        verbose_name="Estado"
+    )
+    metodo_pago = models.CharField(
+        max_length=20,
+        choices=METODO_PAGO,
+        null=True,
+        blank=True,
+        verbose_name="Método de pago"
+    )
+    
+    # Documentación
+    numero_factura = models.CharField(
+        max_length=100,
+        blank=True,
+        verbose_name="Número de factura"
+    )
+    numero_orden_compra = models.CharField(
+        max_length=100,
+        blank=True,
+        verbose_name="Número de orden de compra"
+    )
+    cuenta_bancaria = models.CharField(
+        max_length=100,
+        blank=True,
+        verbose_name="Cuenta bancaria destino"
+    )
+    documento_soporte = models.FileField(
+        upload_to='finanzas/egresos/%Y/%m/',
+        null=True,
+        blank=True,
+        verbose_name="Documento de soporte"
+    )
+    
+    # Retenciones e impuestos
+    retencion_iva = models.DecimalField(
+        max_digits=15,
+        decimal_places=2,
+        default=0,
+        validators=[MinValueValidator(0)],
+        verbose_name="Retención IVA"
+    )
+    retencion_fuente = models.DecimalField(
+        max_digits=15,
+        decimal_places=2,
+        default=0,
+        validators=[MinValueValidator(0)],
+        verbose_name="Retención en la fuente"
+    )
+    
+    # Notas y observaciones
+    notas = models.TextField(
+        blank=True,
+        verbose_name="Notas adicionales"
+    )
+    
+    # Auditoría
+    creado_por = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='egresos_creados',
+        verbose_name="Registrado por"
+    )
+    aprobado_por = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='egresos_aprobados',
+        verbose_name="Aprobado por"
+    )
+    creado_en = models.DateTimeField(auto_now_add=True)
+    actualizado_en = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name = "Egreso"
+        verbose_name_plural = "Egresos"
+        db_table = 'finanzas_egresos'
+        ordering = ['-fecha_vencimiento', '-creado_en']
+        indexes = [
+            models.Index(fields=['proyecto', 'estado']),
+            models.Index(fields=['fecha_vencimiento']),
+            models.Index(fields=['fecha_pago']),
+            models.Index(fields=['tipo_egreso']),
+            models.Index(fields=['proveedor']),
+        ]
+    
+    def __str__(self):
+        return f"{self.proyecto.code} - {self.concepto} - ${self.monto_total}"
+    
+    @property
+    def monto_pendiente(self):
+        """Monto pendiente de pagar"""
+        return self.monto_total - self.monto_pagado
+    
+    @property
+    def monto_neto_pagar(self):
+        """Monto neto a pagar (después de retenciones)"""
+        return self.monto_total - self.retencion_iva - self.retencion_fuente
+    
+    @property
+    def esta_completamente_pagado(self):
+        """Verifica si el egreso está completamente pagado"""
+        return self.monto_pagado >= self.monto_total
+    
+    @property
+    def esta_vencido(self):
+        """Verifica si el egreso está vencido"""
+        if self.estado == 'pagado':
+            return False
+        if self.fecha_vencimiento is None:
+            return False
+        return self.fecha_vencimiento < timezone.now().date()
+    
+    @property
+    def dias_vencidos(self):
+        """Días de retraso en el pago"""
+        if not self.esta_vencido:
+            return 0
+        return (timezone.now().date() - self.fecha_vencimiento).days
+    
+    def marcar_como_pagado(self, monto=None, fecha=None, metodo_pago=None):
+        """Marca el egreso como pagado"""
+        self.monto_pagado = monto or self.monto_total
+        self.fecha_pago = fecha or timezone.now().date()
+        
+        if metodo_pago:
+            self.metodo_pago = metodo_pago
+        
+        if self.esta_completamente_pagado:
+            self.estado = 'pagado'
+        elif self.monto_pagado > 0:
+            self.estado = 'parcial'
+        
+        # Actualizar presupuesto si está asociado
+        if self.presupuesto:
+            self.presupuesto.monto_gastado += (monto or self.monto_total) - (self.monto_pagado - (monto or self.monto_total))
+            self.presupuesto.save()
+        
+        self.save()
